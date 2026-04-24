@@ -1,10 +1,15 @@
-import { User } from "./User";
+import { User, Countries } from "./User";
 
 export const App = () => {
   return (
-    <UserProvider>
-      <User name={"achraf"} age={26} isMarried={true} />
-      <User name={"chirok"} age={20} isMarried={false} />
-    </UserProvider>
+    <>
+      <User name={"achraf"} age={26} isMarried={true} country={Countries.Usa} />
+      <User
+        name={"chirok"}
+        age={20}
+        isMarried={false}
+        country={Countries.Brazil}
+      />
+    </>
   );
 };
