@@ -1,10 +1,10 @@
-import { Person } from "./Person";
+import { User } from "./User";
 
 export const App = () => {
   return (
-    <>
-      <Person name={"achraf"} age={26} isMarried={true} />
-      <Person name={"chirok"} age={20} isMarried={false} />
-    </>
+    <UserProvider>
+      <User name={"achraf"} age={26} isMarried={true} />
+      <User name={"chirok"} age={20} isMarried={false} />
+    </UserProvider>
   );
 };
