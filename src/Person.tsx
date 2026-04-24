@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 
 export interface Person {
   name: string;
@@ -7,18 +7,23 @@ export interface Person {
 }
 
 export const Person = (props: Person) => {
-  const [showInfo, setIsShowInfo] = useState<boolean | null>(false);
-  const toggleInfo = () => setIsShowInfo((prev) => !prev);
+  const [personBio, setPersonBio] = useState<string | null>(null);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPersonBio(event.target.value);
+  };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
   return (
     <div>
-      {showInfo && (
-        <>
-          <p>Name: {props.name}</p>
-          <p> Age: {props.age} </p>
-          <p>This person is {props.isMarried ? "💍 Married" : "🙂 Single"}</p>
-        </>
-      )}
-      <button onClick={toggleInfo}> Toggle Info</button>
+      <p>Name: {props.name}</p>
+      <p> Age: {props.age} </p>
+      <p>This person is {props.isMarried ? "💍 Married" : "🙂 Single"}</p>
+
+      <p>
+        {props.name} Bio: {!personBio ? "No Bio" : personBio}{" "}
+      </p>
+      <input onChange={handleChange}  />
     </div>
   );
 };
